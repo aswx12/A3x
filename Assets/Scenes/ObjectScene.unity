@@ -548,9 +548,9 @@ MonoBehaviour:
   player: {fileID: 841412112}
   enemyTypes:
   - {fileID: 7025216866218390156, guid: f05c5eb26a699894e82103e2baf64447, type: 3}
-  minSpawnTime: 0.1
-  maxSpawnTime: 0.1
-  spawnRateIncreaseInterval: 10
+  minSpawnTime: 0.01
+  maxSpawnTime: 0.01
+  spawnRateIncreaseInterval: 5
   spawnTimer: 0
   canSpawn: 0
   spawnDistanceToPlayer: 25
@@ -585,7 +585,7 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 7025216866218390156, guid: f05c5eb26a699894e82103e2baf64447,
     type: 3}
-  amountToPool: 3000
+  amountToPool: 3002
 --- !u!1 &1657577291
 GameObject:
   m_ObjectHideFlags: 0

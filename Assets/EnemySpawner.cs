@@ -57,30 +57,30 @@ public class EnemySpawner : MonoBehaviour
         float timeBetweenSpawns = Random.Range(minSpawnTime, maxSpawnTime);
         randomSpawn = new Vector3(Random.Range(randomSpawnRangeMin, randomSpawnRangeMax), 0, Random.Range(randomSpawnRangeMin, randomSpawnRangeMax));
         trueSpawnPoint = currentSpawnPoint.transform.position - randomSpawn;
-
-        if (canSpawn)
-        {
-            if (Vector3.Distance(player.transform.position, trueSpawnPoint) < spawnDistanceToPlayer)
+        if (enemies.Count <= 3000)
+            if (canSpawn)
             {
-                spawnAnEnemy = false;
-            }
-
-            if (spawnAnEnemy)
-            {             
-                for (int i = 0; i < enemyPerSpawn; i++)
+                if (Vector3.Distance(player.transform.position, trueSpawnPoint) < spawnDistanceToPlayer)
                 {
-                    GameObject newEnemy = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], trueSpawnPoint, Quaternion.identity);
-                    enemies.Add(newEnemy);
-                }               
-            }
-            else
-            {
-                timeBetweenSpawns = minSpawnTime / 2;
-            }
+                    spawnAnEnemy = false;
+                }
 
-            Invoke("SpawnEnemy", timeBetweenSpawns);
+                if (spawnAnEnemy)
+                {
+                    for (int i = 0; i < enemyPerSpawn; i++)
+                    {
+                        GameObject newEnemy = Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], trueSpawnPoint, Quaternion.identity);
+                        enemies.Add(newEnemy);
+                    }
+                }
+                else
+                {
+                    timeBetweenSpawns = minSpawnTime / 2;
+                }
 
-        }
+                Invoke("SpawnEnemy", timeBetweenSpawns);
+
+            }
     }
 
     // Update is called once per frame
@@ -94,20 +94,20 @@ public class EnemySpawner : MonoBehaviour
                 enemyPerSpawn++;
                 spawnTimer = 0;
             }
-              
+
         }
 
-        //for (int i = 0; i < enemies.Count; i++)
-        //{           
-        //    //Enemy es = enemies[i].GetComponent<Enemy>();
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy es = enemies[i].GetComponent<Enemy>();
 
-        //    if (es.health <= 0)
-        //    {
-        //        Destroy(enemies[i]);
-        //        enemies.RemoveAt(i);
-        //        i--;
-        //    }
-        //}
+            if (es.health <= 0)
+            {
+
+                enemies.RemoveAt(i);
+                i--;
+            }
+        }
 
     }
 }

@@ -530,9 +530,9 @@ MonoBehaviour:
   player: {fileID: 1928776061}
   enemyTypes:
   - {fileID: 9057636317312728818, guid: 92945e6a23f65444a81b20a47d41a332, type: 3}
-  minSpawnTime: 0.1
-  maxSpawnTime: 0.1
-  spawnRateIncreaseInterval: 10
+  minSpawnTime: 0.01
+  maxSpawnTime: 0.01
+  spawnRateIncreaseInterval: 5
   spawnTimer: 0
   canSpawn: 1
   spawnDistanceToPlayer: 25
